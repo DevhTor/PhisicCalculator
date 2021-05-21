@@ -50,18 +50,18 @@ function getCapacitanciaSerie() {
 }
 
 function getMallaLateral() {
-  let volt = voltaje1 + voltaje2;
-  resultado.innerHTML = volt / valor1;
+  let volt = voltaje1 + -voltaje2;
+  resultado.innerHTML = volt / -valor1;
 }
 
 function getMallaCentral() {
-  let mallaLeft = voltaje1 + voltaje2;
-  mallaLeft /= valor1;
+  let mallaLeft = voltaje1 + -voltaje2;
+  mallaLeft /= -valor1;
 
-  let mallaRight = voltaje2 + voltaje3;
-  mallaRight /= valor2;
+  let mallaRight = voltaje2 + -voltaje3;
+  mallaRight /= -valor2;
 
-  resultado.innerHTML = mallaLeft - mallaRight;
+  resultado.innerHTML = mallaRight - mallaLeft;
 }
 
 function parsear() {
@@ -74,6 +74,7 @@ function parsear() {
 }
 
 function leer() {
+  
   valor1 = document.getElementById("valor1");
   valor2 = document.getElementById("valor2");
   valor3 = document.getElementById("valor3");
