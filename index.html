@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Phisic Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <form>
+      <label>Valor1:</label>
+      <input type="text" id="valor1"/>
+      </br>
+      <label>Valor2:</label>
+      <input type="text" id="valor2" />
+      <br>
+      <label>Valor3:</label>
+      <input type="text" id="valor3"/>
+      <br><br>
+      <label>Operacion</label>
+      <select name="transporte">
 
+          <option>Resistencia-Serie</option>
+          
+          <option>Resistencia-Paralelo</option>
+          
+          <option>Capacitor-Serie</option>
+          <option value="capacitor-serie"></option>
+          
+          </select>
+          <br><br>
+      <input type="submit" value="Calcular">
+      <br><br>
+      <label>Resultado:</label>
+      <label id=¨result-label¨>0</label>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
