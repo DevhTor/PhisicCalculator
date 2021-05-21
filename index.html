@@ -9,32 +9,46 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <form>
+    <form id="form">
       <label>Valor1:</label>
       <input type="text" id="valor1"/>
       </br>
       <label>Valor2:</label>
-      <input type="text" id="valor2" />
+      <input type="text" id="valor2"/>
       <br>
       <label>Valor3:</label>
       <input type="text" id="valor3"/>
       <br><br>
-      <label>Operacion</label>
-      <select name="transporte">
+      <label>Voltaje1:</label>
+      <input type="text" id="voltaje1"/>
+      <br>
+      <label>Voltaje2:</label>
+      <input type="text" id="voltaje2"/>
+      <br>
+      <label>Voltaje3:</label>
+      <input type="text" id="voltaje3"/>
+      <br><br>
+      <label id="opcion">Operacion</label>
+      <select name="operacion" id="operacion">
 
           <option>Resistencia-Serie</option>
           
           <option>Resistencia-Paralelo</option>
           
-          <option>Capacitor-Serie</option>
-          <option value="capacitor-serie"></option>
+          <option>Capacitancia-Serie</option>
+
+          <option>Capacitancia-Paralelo</option>
+
+          <option>Malla-Lateral</option>
+
+          <option>Malla-Central</option>
           
           </select>
           <br><br>
-      <input type="submit" value="Calcular">
+      <input type="submit" value="Calcular" id="calcular">
       <br><br>
       <label>Resultado:</label>
-      <label id=¨result-label¨>0</label>
+      <label for="" id="resultado-label"></label>
     </form>
     <script src="script.js"></script>
   </body>
