@@ -54,6 +54,16 @@ function getMallaLateral() {
   resultado.innerHTML = volt / -valor1;
 }
 
+function getMallaIzquierda(){
+  let volt = voltaje1 + -voltaje2;
+  resultado.innerHTML = volt / -valor1;
+}
+
+function getMallaDerecha(){
+  let volt = voltaje2 + -voltaje3;
+  resultado.innerHTML = volt / -valor1;
+}
+
 function getMallaCentral() {
   let mallaLeft = voltaje1 + -voltaje2;
   mallaLeft /= -valor1;
