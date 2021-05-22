@@ -5,39 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Phisic Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
   </head>
   <body>
     <form id="form">
       <label>R1:</label>
-      <input type="text" id="R1"/>
+      <input type="text" id="R1" value="0"/>
       </br>
       <label>R2:</label>
-      <input type="text" id="R2"/>
+      <input type="text" id="R2" value="0"/>
       <br>
       <label>R3:</label>
-      <input type="text" id="R3"/>
+      <input type="text" id="R3" value="0"/>
       <br><br>
 
       <label>C1:</label>
-      <input type="text" id="C1"/>
+      <input type="text" id="C1" value="0"/>
       </br>
       <label>C2:</label>
-      <input type="text" id="C2"/>
+      <input type="text" id="C2" value="0"/>
       <br>
       <label>C3:</label>
-      <input type="text" id="C3"/>
+      <input type="text" id="C3" value="0"/>
       <br><br>
 
       <label>V1:</label>
-      <input type="text" id="v1"/>
+      <input type="text" id="V1" value="0"/>
       <br>
       <label>V2:</label>
-      <input type="text" id="v2"/>
+      <input type="text" id="V2" value="0"/>
       <br>
       <label>V3:</label>
-      <input type="text" id="v3"/>
+      <input type="text" id="V3" value="0"/>
       <br><br>
       <label id="opcion">Operacion</label>
       <select name="operacion" id="operacion">
@@ -50,22 +48,26 @@
 
           <option>Capacitancia-Paralelo</option>
 
-          <option>Malla-Lateral</option>
+          <option>Malla-Izquierda</option>
+
+          <option>Malla-Izquierda 2R</option>
+
+          <option>Malla-Derecha</option>
 
           <option>Malla-Central</option>
+
+          <option>Potencia-I1-R1</option>
           
           </select>
           <br><br>
       <input type="submit" value="Calcular" id="calcular">
       <br><br>
-      <label>R1:</label>
-      <label for="" id="R1-label"></label>
-      <br>
-      <label>R2:</label>
-      <label for="" id="R2-label"></label>
-      <br>
-      <label>R3:</label>
-      <label for="" id="R3-label"></label>
+      <label>Req:</label>
+      <label for="" id="Req-label"></label>
+      <br><br>
+
+      <label>Ceq:</label>
+      <label for="" id="Ceq-label"></label>
       <br><br>
 
       <label>VR1:</label>
@@ -78,15 +80,19 @@
       <label for="" id="VR3-label"></label>
       <br><br>
 
-      <label>C1:</label>
-      <label for="" id="C1-label"></label>
+      <label>I1:</label>
+      <label for="" id="I1-label"></label>
       <br>
-      <label>C2:</label>
-      <label for="" id="C2-label"></label>
+      <label>I2:</label>
+      <label for="" id="I2-label"></label>
       <br>
-      <label>C3:</label>
-      <label for="" id="C3-label"></label>
+      <label>I3:</label>
+      <label for="" id="I3-label"></label>
       <br><br>
+      <label>P(I1R1):</label>
+      <label for="" id="P-I1-R1-label"></label>
+      <br><br>
+      
       
     </form>
     <script src="script.js"></script>
