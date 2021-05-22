@@ -16,7 +16,9 @@ var VR3;
 var I1;
 var I2;
 var I3;
-var P;
+var PR1;
+var PR2;
+var PR3;
 var operacion = document.getElementById("operacion");
 
 form.addEventListener("submit", (e) => {
@@ -36,7 +38,9 @@ function ElegirOperacion() {
   else if (opcion === "Malla-Izquierda 2R") getMallaIzquierda2R();
   else if (opcion === "Malla-Derecha") getMallaDerecha();  
   else if (opcion === "Malla-Central") getMallaCentral();
-  else if (opcion === "Potencia-I1-R1") getPotencia();
+  else if (opcion === "Potencia R1") getPotenciaR1();
+  else if (opcion === "Potencia R2") getPotenciaR2();
+  else if (opcion === "Potencia R3") getPotenciaR3();
 }
 
 function getResistenciaSerie() {
@@ -65,22 +69,22 @@ function getCapacitanciaSerie() {
 
 function getMallaIzquierda(){
   let volt = V1 + -V2;
-  I1.innerHTML = volt / -R1;
+  I1.value = volt / -R1;
 }
 
 function getMallaIzquierda2R(){
   let volt = V1 + -V2;
   let ohm = R1 + R2;
   let amp = volt / -ohm;
-  I1.innerHTML = amp;
+  I1.value = amp;
   VR1.innerHTML = R1 * amp;
   VR2.innerHTML = R2 * amp;
-
 }
 
 function getMallaDerecha(){
-  let volt = V2 + -V3;
-  I2.innerHTML = volt / -R2;
+  let volt = V2 + -V3; 
+  I2.value = volt / -R2; 
+
 }
 
 function getMallaCentral() {
@@ -90,11 +94,20 @@ function getMallaCentral() {
   let mallaRight = V2 + -V3;
   mallaRight /= -R2;
 
-  I3.innerHTML = mallaRight - mallaLeft;
+  I3.value = mallaRight - mallaLeft;
 }
 
-function getPotencia(){
-  p.innerHTML = Math.pow(I1,2) * R1;
+function getPotenciaR1(){
+  
+  PR1.innerHTML = (parseFloat(I1.value) * parseFloat(I1.value)) * R1;
+}
+
+function getPotenciaR2(){
+  PR2.innerHTML = (parseFloat(I2.value) * parseFloat(I2.value)) * R2;
+}
+
+function getPotenciaR3(){
+  PR3.innerHTML = (parseFloat(I3.value) * parseFloat(I3.value)) * R3;
 }
 
 function parsear() {
@@ -110,10 +123,7 @@ function parsear() {
   V1 = parseFloat(V1.value);
   V2 = parseFloat(V2.value);
   V3 = parseFloat(V3.value);
-  //A
-  //A1 = parseFloat(A1.value);
-  //A2 = parseFloat(A2.value);
-  //A3 = parseFloat(A3.value);
+
 }
 
 function leer() {
@@ -135,11 +145,14 @@ function leer() {
   VR1 = document.getElementById("VR1-label");
   VR2 = document.getElementById("VR2-label");
   VR3 = document.getElementById("VR3-label");
-  //A
-  I1 = document.getElementById("I1-label");
-  I2 = document.getElementById("I2-label");
-  I3 = document.getElementById("I3-label");
+  //I
+  I1 = document.getElementById("I1");
+  I2 = document.getElementById("I2");
+  I3 = document.getElementById("I3");
   //P
-  P = document.getElementById("P-I1-R1-label")
-   
+  PR1 = document.getElementById("PR1-label");
+  PR2 = document.getElementById("PR2-label")
+  PR3 = document.getElementById("PR3-label")
+  
+  
 }
