@@ -37,7 +37,7 @@ function ElegirOperacion() {
   else if (opcion === "Capacitancia-Paralelo") getCapacitanciaParalelo();
   else if (opcion === "Malla-Izquierda") getMallaIzquierda();
   else if (opcion === "Malla-Izquierda 2R") getMallaIzquierda2R();
-  else if (opcion === "Malla-Derecha") getMallaDerecha();  
+  else if (opcion === "Malla-Derecha") getMallaDerecha();
   else if (opcion === "Malla-Central") getMallaCentral();
   else if (opcion === "Potencia R1") getPotenciaR1();
   else if (opcion === "Potencia R2") getPotenciaR2();
@@ -49,9 +49,9 @@ function getResistenciaSerie() {
 }
 
 function getResistenciaParalelo() {
-  if(R1 != 0) R1 = 1 / R1;
-  if(R2 != 0) R2 = 1 / R2;
-  if(R3 != 0) R3 = 1 / R3;
+  if (R1 !== 0) R1 = 1 / R1;
+  if (R2 !== 0) R2 = 1 / R2;
+  if (R3 !== 0) R3 = 1 / R3;
   let temp = R1 + R2 + R3;
   Req.innerHTML = 1 / temp;
 }
@@ -59,25 +59,27 @@ function getResistenciaParalelo() {
 function getCapacitanciaParalelo() {
   let c = C1 + C2 + C3;
   Ceq.innerHTML = c;
-  CargaCeq.innerHTML = (c * Math.pow(10,-6)) * V1;
+  let convert = c * Math.pow(10, -6);
+  CargaCeq.innerHTML = convert * V1;
 }
 
 function getCapacitanciaSerie() {
-  if(C1 != 0) C1 = 1 / C1;
-  if(C2 != 0) C2 = 1 / C2;
-  if(C3 != 0) C3 = 1 / C3;
+  if (C1 !== 0) C1 = 1 / C1;
+  if (C2 !== 0) C2 = 1 / C2;
+  if (C3 !== 0) C3 = 1 / C3;
   let temp = C1 + C2 + C3;
-  let c = 1/temp;
+  let c = 1 / temp;
   Ceq.innerHTML = c;
-  CargaCeq.innerHTML = c * V1;
+  let convert = c * Math.pow(10, -6);
+  CargaCeq.innerHTML = convert * V1;
 }
 
-function getMallaIzquierda(){
+function getMallaIzquierda() {
   let volt = V1 + -V2;
   I1.value = volt / -R1;
 }
 
-function getMallaIzquierda2R(){
+function getMallaIzquierda2R() {
   let volt = V1 + -V2;
   let ohm = R1 + R2;
   let amp = volt / -ohm;
@@ -86,10 +88,9 @@ function getMallaIzquierda2R(){
   VR2.innerHTML = R2 * amp;
 }
 
-function getMallaDerecha(){
-  let volt = V2 + -V3; 
-  I2.value = volt / -R2; 
-
+function getMallaDerecha() {
+  let volt = V2 + -V3;
+  I2.value = volt / -R2;
 }
 
 function getMallaCentral() {
@@ -102,19 +103,17 @@ function getMallaCentral() {
   I3.value = mallaRight - mallaLeft;
 }
 
-function getPotenciaR1(){
-  
-  PR1.innerHTML = (parseFloat(I1.value) * parseFloat(I1.value)) * R1;
+function getPotenciaR1() {
+  PR1.innerHTML = parseFloat(I1.value) * parseFloat(I1.value) * R1;
 }
 
-function getPotenciaR2(){
-  PR2.innerHTML = (parseFloat(I2.value) * parseFloat(I2.value)) * R2;
+function getPotenciaR2() {
+  PR2.innerHTML = parseFloat(I2.value) * parseFloat(I2.value) * R2;
 }
 
-function getPotenciaR3(){
-  PR3.innerHTML = (parseFloat(I3.value) * parseFloat(I3.value)) * R3;
+function getPotenciaR3() {
+  PR3.innerHTML = parseFloat(I3.value) * parseFloat(I3.value) * R3;
 }
-
 
 function parsear() {
   //R
@@ -129,7 +128,6 @@ function parsear() {
   V1 = parseFloat(V1.value);
   V2 = parseFloat(V2.value);
   V3 = parseFloat(V3.value);
-
 }
 
 function leer() {
@@ -158,8 +156,6 @@ function leer() {
   I3 = document.getElementById("I3");
   //P
   PR1 = document.getElementById("PR1-label");
-  PR2 = document.getElementById("PR2-label")
-  PR3 = document.getElementById("PR3-label")
-  
-  
+  PR2 = document.getElementById("PR2-label");
+  PR3 = document.getElementById("PR3-label");
 }
