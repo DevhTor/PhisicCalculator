@@ -7,6 +7,7 @@ var C1;
 var C2;
 var C3;
 var Ceq;
+var CargaCeq;
 var V1;
 var V2;
 var V3;
@@ -56,7 +57,9 @@ function getResistenciaParalelo() {
 }
 
 function getCapacitanciaParalelo() {
-  Ceq.innerHTML = R1 + R2 + R3;
+  let c = C1 + C2 + C3;
+  Ceq.innerHTML = c;
+  CargaCeq.innerHTML = (c * Math.pow(10,-6)) * V1;
 }
 
 function getCapacitanciaSerie() {
@@ -64,7 +67,9 @@ function getCapacitanciaSerie() {
   if(C2 != 0) C2 = 1 / C2;
   if(C3 != 0) C3 = 1 / C3;
   let temp = C1 + C2 + C3;
-  Ceq.innerHTML = 1 / temp;
+  let c = 1/temp;
+  Ceq.innerHTML = c;
+  CargaCeq.innerHTML = c * V1;
 }
 
 function getMallaIzquierda(){
@@ -110,6 +115,7 @@ function getPotenciaR3(){
   PR3.innerHTML = (parseFloat(I3.value) * parseFloat(I3.value)) * R3;
 }
 
+
 function parsear() {
   //R
   R1 = parseFloat(R1.value);
@@ -137,6 +143,7 @@ function leer() {
   C2 = document.getElementById("C2");
   C3 = document.getElementById("C3");
   Ceq = document.getElementById("Ceq-label");
+  CargaCeq = document.getElementById("CargaCeq-label");
   //V
   V1 = document.getElementById("V1");
   V2 = document.getElementById("V2");
