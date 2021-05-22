@@ -1,37 +1,64 @@
 var form = document.getElementById("form");
-var R1;
-var R2;
-var R3;
-var Req;
-var C1;
-var C2;
-var C3;
-var Ceq;
-var CargaCeq;
-var V1;
-var V2;
-var V3;
-var VR1;
-var VR2;
-var VR3;
-var I1;
-var I2;
-var I3;
-var PR1;
-var PR2;
-var PR3;
-var PRT;
-var PR1_value = 0;
-var PR2_value = 0;
-var PR3_value = 0;
 var operacion = document.getElementById("operacion");
+
+var R1, R2, R3, Req_label;
+var C1, C2, C3, Ceq_label;
+var V1, V2, V3;
+var I1, I2, I3;
+
+var QCeq_label;
+
+var VR1_label, VR2_label, VR3_label;
+var PR1_label, PR2_label, PR3_label, PRT_label;
+
+var PR1 = 0,
+  PR2 = 0,
+  PR3 = 0;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   leer();
-  parsear();
   ElegirOperacion();
 });
+
+function leer() {
+  //R
+  R1 = LeerInput("R1");
+  R2 = LeerInput("R2");
+  R3 = LeerInput("R3");
+  Req_label = LeerLabel("Req-label");
+  //C
+  C1 = LeerInput("C1");
+  C2 = LeerInput("C2");
+  C3 = LeerInput("C3");
+  Ceq_label = LeerLabel("Ceq-label");
+  QCeq_label = LeerLabel("CargaCeq-label");
+  //V
+  V1 = LeerInput("C1");
+  V2 = LeerInput("C2");
+  V3 = LeerInput("C3");
+  //VR
+  VR1_label = LeerInput("VR1-label");
+  VR2_label = LeerInput("VR2-label");
+  VR3_label = LeerInput("VR3-label");
+  //PR
+  PR1_label = LeerLabel("PR1-label");
+  PR2_label = LeerLabel("PR2-label");
+  PR3_label = LeerLabel("PR3-label");
+  PRT_label = LeerLabel("PRT-label");
+  //I
+  I1 = LeerLabel("I1");
+  I2 = LeerLabel("I2");
+  I3 = LeerLabel("I3");
+}
+
+function LeerInput(clave) {
+  return parseFloat(document.getElementById(clave).value);
+}
+
+function LeerLabel(clave) {
+  return document.getElementById(clave);
+}
 
 function ElegirOperacion() {
   let opcion = operacion.options[operacion.selectedIndex].text;
@@ -50,7 +77,7 @@ function ElegirOperacion() {
 }
 
 function getResistenciaSerie() {
-  Req.innerHTML = R1 + R2 + R3;
+  Req_label.innerHTML = R1 + R2 + R3;
 }
 
 function getResistenciaParalelo() {
@@ -58,14 +85,14 @@ function getResistenciaParalelo() {
   if (R2 !== 0) R2 = 1 / R2;
   if (R3 !== 0) R3 = 1 / R3;
   let temp = R1 + R2 + R3;
-  Req.innerHTML = 1 / temp;
+  Req_label.innerHTML = 1 / temp;
 }
 
 function getCapacitanciaParalelo() {
   let c = C1 + C2 + C3;
-  Ceq.innerHTML = c;
+  Ceq_label.innerHTML = c;
   let convert = c * Math.pow(10, -6);
-  CargaCeq.innerHTML = convert * V1;
+  QCeq_label.innerHTML = convert * V1;
 }
 
 function getCapacitanciaSerie() {
@@ -74,9 +101,9 @@ function getCapacitanciaSerie() {
   if (C3 !== 0) C3 = 1 / C3;
   let temp = C1 + C2 + C3;
   let c = 1 / temp;
-  Ceq.innerHTML = c;
+  Ceq_label.innerHTML = c;
   let convert = c * Math.pow(10, -6);
-  CargaCeq.innerHTML = convert * V1;
+  QCeq_label.innerHTML = convert * V1;
 }
 
 function getMallaIzquierda() {
@@ -89,8 +116,8 @@ function getMallaIzquierda2R() {
   let ohm = R1 + R2;
   let amp = volt / -ohm;
   I1.value = amp;
-  VR1.innerHTML = R1 * amp;
-  VR2.innerHTML = R2 * amp;
+  VR1_label.innerHTML = R1 * amp;
+  VR2_label.innerHTML = R2 * amp;
 }
 
 function getMallaDerecha() {
@@ -109,69 +136,23 @@ function getMallaCentral() {
 }
 
 function getPotenciaR1() {
-  PR1_value = parseFloat(I1.value) * parseFloat(I1.value) * R1;
-  PR1.innerHTML = PR1_value;
+  PR1 = Math.pow(parseFloat(I1.value), 2) * R1;
+  PR1_label.innerHTML = PR1;
   getPotenciaRT();
 }
 
 function getPotenciaR2() {
-  PR2_value = parseFloat(I2.value) * parseFloat(I2.value) * R2;
-  PR2.innerHTML = PR2_value;
+  PR2 = Math.pow(parseFloat(I2.value), 2) * R2;
+  PR2_label.innerHTML = PR2;
   getPotenciaRT();
 }
 
 function getPotenciaR3() {
-  PR3_value = parseFloat(I3.value) * parseFloat(I3.value) * R3;
-  PR3.innerHTML = PR3_value;
+  PR3 = Math.pow(parseFloat(I3.value), 2) * R3;
+  PR3_label.innerHTML = PR3;
   getPotenciaRT();
 }
 
 function getPotenciaRT() {
-  PRT.innerHTML = PR1_value + PR2_value + PR3_value;
-}
-
-function parsear() {
-  //R
-  R1 = parseFloat(R1.value);
-  R2 = parseFloat(R2.value);
-  R3 = parseFloat(R3.value);
-  //C
-  C1 = parseFloat(C1.value);
-  C2 = parseFloat(C2.value);
-  C3 = parseFloat(C3.value);
-  //VR
-  V1 = parseFloat(V1.value);
-  V2 = parseFloat(V2.value);
-  V3 = parseFloat(V3.value);
-}
-
-function leer() {
-  //R
-  R1 = document.getElementById("R1");
-  R2 = document.getElementById("R2");
-  R3 = document.getElementById("R3");
-  Req = document.getElementById("Req-label");
-  //C
-  C1 = document.getElementById("C1");
-  C2 = document.getElementById("C2");
-  C3 = document.getElementById("C3");
-  Ceq = document.getElementById("Ceq-label");
-  CargaCeq = document.getElementById("CargaCeq-label");
-  //V
-  V1 = document.getElementById("V1");
-  V2 = document.getElementById("V2");
-  V3 = document.getElementById("V3");
-  //VR
-  VR1 = document.getElementById("VR1-label");
-  VR2 = document.getElementById("VR2-label");
-  VR3 = document.getElementById("VR3-label");
-  //I
-  I1 = document.getElementById("I1");
-  I2 = document.getElementById("I2");
-  I3 = document.getElementById("I3");
-  //P
-  PR1 = document.getElementById("PR1-label");
-  PR2 = document.getElementById("PR2-label");
-  PR3 = document.getElementById("PR3-label");
-  PRT = document.getElementById("PRT-label");
+  PRT_label.innerHTML = PR1 + PR2 + PR3;
 }
