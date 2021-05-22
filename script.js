@@ -20,6 +20,10 @@ var I3;
 var PR1;
 var PR2;
 var PR3;
+var PRT;
+var PR1_value = 0;
+var PR2_value = 0;
+var PR3_value = 0;
 var operacion = document.getElementById("operacion");
 
 form.addEventListener("submit", (e) => {
@@ -42,6 +46,7 @@ function ElegirOperacion() {
   else if (opcion === "Potencia R1") getPotenciaR1();
   else if (opcion === "Potencia R2") getPotenciaR2();
   else if (opcion === "Potencia R3") getPotenciaR3();
+  else if (opcion === "Potencia RT") getPotenciaRT();
 }
 
 function getResistenciaSerie() {
@@ -104,15 +109,25 @@ function getMallaCentral() {
 }
 
 function getPotenciaR1() {
-  PR1.innerHTML = parseFloat(I1.value) * parseFloat(I1.value) * R1;
+  PR1_value = parseFloat(I1.value) * parseFloat(I1.value) * R1;
+  PR1.innerHTML = PR1_value;
+  getPotenciaRT();
 }
 
 function getPotenciaR2() {
-  PR2.innerHTML = parseFloat(I2.value) * parseFloat(I2.value) * R2;
+  PR2_value = parseFloat(I2.value) * parseFloat(I2.value) * R2;
+  PR2.innerHTML = PR2_value;
+  getPotenciaRT();
 }
 
 function getPotenciaR3() {
-  PR3.innerHTML = parseFloat(I3.value) * parseFloat(I3.value) * R3;
+  PR3_value = parseFloat(I3.value) * parseFloat(I3.value) * R3;
+  PR3.innerHTML = PR3_value;
+  getPotenciaRT();
+}
+
+function getPotenciaRT() {
+  PRT.innerHTML = PR1_value + PR2_value + PR3_value;
 }
 
 function parsear() {
@@ -158,4 +173,5 @@ function leer() {
   PR1 = document.getElementById("PR1-label");
   PR2 = document.getElementById("PR2-label");
   PR3 = document.getElementById("PR3-label");
+  PRT = document.getElementById("PRT-label");
 }
